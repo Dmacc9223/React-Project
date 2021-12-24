@@ -11,6 +11,7 @@ jobs:
     name: Scan
     runs-on: ubuntu-latest
     steps:
+    - name: Semgrep Scanning
     - uses: actions/checkout@v2
     - uses: returntocorp/semgrep-action@v1
       with:
