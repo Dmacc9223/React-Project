@@ -1,10 +1,5 @@
 name: Semgrep
-on:
-  push:
-    branches:
-    - main
-    - master
-
+on: [push,pull_request]
 jobs:
   semgrep:
     name: Scan
