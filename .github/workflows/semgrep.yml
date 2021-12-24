@@ -19,10 +19,6 @@ jobs:
       with:
         publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
         
-  Notification:
-    name: Notification on Jira
-    runs-on: ubuntu-latest
-    steps:
     - name: Login to Jira
       uses: atlassian/gajira-login@master
       if: failure()
