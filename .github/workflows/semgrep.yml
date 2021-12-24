@@ -20,6 +20,7 @@ jobs:
         publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
         
     - name: Login to Jira
+    - uses: actions/checkout@v2
     - uses: atlassian/gajira-login@master
       if: failure()
       env:
