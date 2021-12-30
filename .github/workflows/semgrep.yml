@@ -7,11 +7,17 @@ on:
     - main
     - master
 jobs:
-  semgrep:
+   semgrep:
     name: Scan
     runs-on: ubuntu-latest
+    # Skip any PR created by dependabot to avoid permission issues
+    if: (github.actor != 'dependabot[bot]')
     steps:
-    - uses: actions/checkout@v2
-    - uses: returntocorp/semgrep-action@v1
-      with:
-        publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
+      # Fetch project source
+      - uses: actions/checkout@v2
+
+      - uses: returntocorp/semgrep-action@v1
+        with:
+          config: >- # more at semgrep.dev/explore
+            p/security-audit
+            p/secrets
